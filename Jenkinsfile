@@ -1,7 +1,7 @@
 pipeline {
   agent any
   stages {
-    stage('Prepare Maven') {
+    stage('Pre-reqs') {
       parallel {
         stage('Prepare Maven') {
           steps {
