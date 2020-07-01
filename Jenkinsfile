@@ -20,7 +20,8 @@ mvn clean package -Dlicense.skip=true'''
 
     stage('Testing') {
       steps {
-        sh ' mvn sonar:sonar -Dsonar.host.url=https://58ea782a-85f3-41eb-af25-56e8d1f1052d-sonarqube9000.sessions.dev.skillslounge.io -Dlicense.skip=true'
+        sh '''export PATH=$PATH:/tmp/apache-maven-3.6.3/bin
+mvn sonar:sonar -Dsonar.host.url=https://58ea782a-85f3-41eb-af25-56e8d1f1052d-sonarqube9000.sessions.dev.skillslounge.io -Dlicense.skip=true'''
       }
     }
 
