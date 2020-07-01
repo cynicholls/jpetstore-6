@@ -14,7 +14,9 @@ pipeline {
         stage('Prepare Chromedriver') {
           steps {
             echo 'Download Chromedriver'
-            sh 'wget -c https://chromedriver.storage.googleapis.com/83.0.4103.39/chromedriver_linux64.zip -O chromedriver.zip | unzip chromedriver.zip'
+            sh '''pwd
+wget -c https://chromedriver.storage.googleapis.com/83.0.4103.39/chromedriver_linux64.zip -O chromedriver.zip
+ls -l'''
           }
         }
 
