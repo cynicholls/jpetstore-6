@@ -16,6 +16,7 @@ pipeline {
             echo 'Download Chromedriver'
             sh '''pwd
 wget -c https://chromedriver.storage.googleapis.com/83.0.4103.39/chromedriver_linux64.zip -O chromedriver.zip
+unzip chromedriver.zip
 ls -l'''
           }
         }
