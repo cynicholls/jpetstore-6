@@ -14,10 +14,12 @@ pipeline {
         stage('Prepare Chromedriver') {
           steps {
             echo 'Download Chromedriver'
-            sh '''pwd
+            sh '''CHROME_HOME="/var/jenkins_home/.m2/repository/webdriver/chromedriver/linux64/83.0.4103.39"
 wget -c https://chromedriver.storage.googleapis.com/83.0.4103.39/chromedriver_linux64.zip -O chromedriver.zip
 unzip chromedriver.zip
-ls -l'''
+mkdir -p $CHROME_HOME
+mv chromedriver $CHROME_HOME
+ls -l $CHROME_HOME'''
           }
         }
 
