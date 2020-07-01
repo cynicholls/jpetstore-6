@@ -25,5 +25,27 @@ mvn sonar:sonar -Dsonar.host.url=https://58ea782a-85f3-41eb-af25-56e8d1f1052d-so
       }
     }
 
+    stage('JFrog Push') {
+      steps {
+        script {
+          def server = Artifactory.server "artifactory"
+          def buildInfo = Artifactory.newBuildInfo()
+          def rtMaven = Artifactory.newMavenBuild()
+
+          rtMaven.tool = 'maven'
+          rtMaven.deployer server: server, releaseRepo: 'libs-release-local', snapshotRepo: 'libs-snapshot-local'
+
+          buildInfo = rtMaven.run pom: 'pom.xml', goals: "clean install -Dlicense.skip=true"
+          buildInfo.env.capture = true
+          buildInfo.name = 'jpetstore-6'
+          server.publishBuildInfo buildInfo
+        }
+
+      }
+    }
+
+  }
+  tools {
+    maven 'maven'
   }
 }
