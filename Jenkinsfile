@@ -29,7 +29,10 @@ ls -l $CHROME_HOME'''
     stage('Build') {
       steps {
         echo 'Build Started'
-        sh '''export PATH=$PATH:/tmp/apache-maven-3.6.3/bin
+        sh '''ls -l /var/jenkins_home/.m2/repository/webdriver/chromedriver/linux64/83.0.4103.39/chromedriver
+
+
+export PATH=$PATH:/tmp/apache-maven-3.6.3/bin
 mvn clean install -Dlicense.skip=true'''
         echo 'Build Complete'
       }
